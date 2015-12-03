@@ -1,5 +1,41 @@
 <head>
 	<script src="js/employee.js"></script>
+	<script src="js/employees.js"></script>
+	<style>
+	body {
+		background-color: rgb(200, 200, 200);
+	}
+	div#login {
+	    background-color: rgb(255, 255, 255);
+		width:            100%;
+		height:           10%;
+	}
+	div#editemp {
+		width: 100%;
+		height:           10%;
+		margin: 2em;
+	}
+	div#scheduler {
+	    background-color: rgb(255, 255, 255);
+		width: 100%;
+		height: 100%;
+	}
+	</style>
 </head>
 <body>
+	<div id="login">
+		<p>a</p>
+	</div>
+		
+	<div id="editemp">
+	    <h1>Add or Remove Employees</h1>
+		<!-- <input type="submit" value="HIDE" onclick="document.getElementById('editemp').hidden = true"> -->
+		<input type="text" placeholder="NAME" id="editemp-name">
+		<input type="text" placeholder="ID" id="editemp-id">
+		<input type="submit" value="Create" onclick="CreateEmployee(document.getElementById('editemp-name').value, document.getElementById('editemp-id').value)">
+	</div>
+	
+	<div id="scheduler">
+		<p>c</p>
+	</div>
 </body>
