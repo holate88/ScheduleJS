@@ -6,12 +6,18 @@
 		var emps = [];
 		_dp(this, "AddEmployee", { value: 
 			function(name, id) {
-				emps.push(new _Emp(name, id));
+				var new_emp = new _Emp(name, id);
+				
+				if(this.GetEmployeeByName(new_emp.name) !== -1 || this.GetEmployeeById(new_emp.id) !== -1)
+				   throw new Error("Already created employee...");
+				
+				emps.push(new_emp);
+				return new_emp;
 			}
 		});
 		_dp(this, "RemoveEmployee", { value: 
 			function(index) {
-				emps.splice(index, 1);
+				return emps.splice(index, 1);
 			}
 		});
 		_dp(this, "GetEmployee", { value: 
@@ -46,9 +52,9 @@
 	var Emps = new Employees();
 	
 	// Add Employees...
-	Emps.AddEmployee("Dylan Holt", 0);
-	
-	Emps.LoopEmployees(function(emp){ console.log(emp.name) });
+	var emp = Emps.AddEmployee("Dylan Holt", 0);
+	emp = Emps.AddEmployee("Jacob Diaz", 1);
+	//emp.Add_Time_Slot("M", "07:00", "11:00");
 	
 	_dp(_, "Employees", { value: Emps });
 })(this, Object.defineProperty, Employee)

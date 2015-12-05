@@ -33,6 +33,15 @@ Employee.prototype.Remove_Time_Slot = function(day_of_week, index) {
 function Time_Slot(start, end) {
     this.start = start;
     this.end   = end;
+	
+	this.toString = function() {
+		return this.start + " - " + this.end;
+	}
+	this.toHTML = function(id) {
+		var p = document.createElement("p");
+		p.innerText = this.toString();
+		return p;
+	}
 };
 
 function Day(day_of_week) {
@@ -50,6 +59,10 @@ function Week() {
     for(var i in week_days)
        (function(day_of_week){ _dp(self, day_of_week, { value: new Day(day_of_week), enumerable: true }) })(week_days[i]);
 };
+Week.prototype.LoopDays = function(f) {
+	for(var i in this)
+		f(this[i]);
+}
 
 function Schedule() {
     var self = this;
