@@ -35,6 +35,8 @@
 		});
 		_dp(this, "GetEmployeeById", { value: 
 			function(id) {
+				// Makes sure that id is a number.
+				id = +id;
 				for(var i in emps)
 					if(emps[i].id === id)
 						return i;
@@ -53,7 +55,7 @@
 	
 	// Add Employees...
 	var emp = Emps.AddEmployee("Dylan Holt", 0);
-	emp = Emps.AddEmployee("Jacob Diaz", 1);
+		 emp = Emps.AddEmployee("Jacob Diaz", 1);
 	//emp.Add_Time_Slot("M", "07:00", "11:00");
 	
 	_dp(_, "Employees", { value: Emps });
